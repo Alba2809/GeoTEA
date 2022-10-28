@@ -20,12 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuAjustes.unity
     guid: 1ee6dad45ab8da84ba127cc8fde52478
-  - enabled: 0
-    path: Assets/Scenes/GeoRush.unity
-    guid: 3894af946ef55be41af2039cf5872772
+  - enabled: 1
+    path: Assets/Scenes/GeoRush A.unity
+    guid: caa3220ce119b214fb0ba04670ba6c2f
   - enabled: 1
     path: Assets/Scenes/GeoRush B.unity
     guid: e98410a2ad90d2a41ab918a670e66a50
+  - enabled: 1
+    path: Assets/Scenes/runner_720p.unity
+    guid: 85b99ff52ff490d4aaac495ac16559dc
+  - enabled: 1
+    path: Assets/Scenes/runner_level2.unity
+    guid: eed1cf8fb72469a43abf14fd50360a60
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d3cde70c561b95f4bb47b79116022e3d, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 9f5d097852ff1a14ab3344ad5eacf574, type: 2}

@@ -15,6 +15,7 @@ public class MenuJuegos : MonoBehaviour
     [SerializeField] private RectTransform btnRetrun;
     [SerializeField] private RectTransform btnAjuste;
 
+    
     //variable de guardar informacion
     private string coinsPrefs = "Monedas";
 
@@ -35,17 +36,18 @@ public class MenuJuegos : MonoBehaviour
         LeanTween.rotate(btnAjuste, 360f, 1f).setDelay(0.2f);
     }
 
-    public void GeoRush()
+    public void GeoRun()
     {
+
         LeanTween.moveY(logo, 950f, 1f).setDelay(0.2f).setEase(LeanTweenType.easeOutBounce);
         LeanTween.alpha(btnGame1, 0f, 1f).setDelay(0.2f);
         LeanTween.alpha(btnGame2, 0f, 1f).setDelay(0.2f);
-        LeanTween.alpha(btnGame3, 0f, 1f).setDelay(0.2f).setOnComplete(irGeoRush);
+        LeanTween.alpha(btnGame3, 0f, 1f).setDelay(0.2f).setOnComplete(irGeoRun);
     }
     
-    private void irGeoRush()
+    private void irGeoRun()
     {
-        SceneManager.LoadScene("GeoRush B");
+        SceneManager.LoadScene("runner_720p");
     }
 
     public void Ajustes()

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
+using UnityEngine.SceneManagement;
 
 public class MenuGameEnd : MonoBehaviour
 {
@@ -12,10 +12,16 @@ public class MenuGameEnd : MonoBehaviour
     [SerializeField] private RectTransform menuEnd;
     [SerializeField] private GameObject menuGameEnd;
 
+    
+
     public void PlusCoins()
     {
+        int pc = 10;
+        Scene sceneCurrent = SceneManager.GetActiveScene();
+        if (sceneCurrent.name.Equals("GeoRush A")) pc = 10;  //coins to normal lvl
+        if (sceneCurrent.name.Equals("GeoRush B")) pc = 20;  //coins to hard lvl
         currentCoins = PlayerPrefs.GetInt(coinsPrefs, 0);
-        PlayerPrefs.SetInt(coinsPrefs, currentCoins + 10);
+        PlayerPrefs.SetInt(coinsPrefs, currentCoins + pc);
     }
 
 
