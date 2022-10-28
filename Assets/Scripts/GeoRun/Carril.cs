@@ -49,7 +49,7 @@ public class Carril : MonoBehaviour
 
 
                 //textoIntentos.text = "Itentos :" + aciertos;
-                if (player.aciertos == 1)//5
+                if (player.aciertos == 5)//5
                 {
                     Debug.Log("Tienes 20 monedas");
                     Debug.Log("Se ha terminado la partida y has ganado");
@@ -58,7 +58,7 @@ public class Carril : MonoBehaviour
                     {
                         EndGame(true);
                     }
-                    
+                    player.PlaySoundEndGame();
                     //menuEndPlay();
                 }
             }
@@ -72,6 +72,7 @@ public class Carril : MonoBehaviour
                     Debug.Log("El juegos ha terminado");
                     Time.timeScale = 0;
                     EndGame(false);
+                    player.PlaySoundEndGame();
                     //menuEndPlay();
                 }
             }
