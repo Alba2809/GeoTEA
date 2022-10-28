@@ -19,17 +19,28 @@ public class PlayerMovement : MonoBehaviour
     public bool levelOne;
     public int intentos { get; set; } = 3;
     public int aciertos { get; set; } = 0;
+    /*
+    public AudioClip soundButton;
+    public AudioSource soundPlayer; //cuando aparece el jugador por primera vez
+    public AudioSource soundFinalGame; */
 
     public Image Image;
 
     public Transform start;
     public Transform end;
 
+    //sonido cuando aparece jugador
+    public AudioSource source { get { return GetComponent<AudioSource>(); } }
+    public AudioClip clip; //sonido
+    public AudioClip clipEnd; //sonido al finalizar partida
+
     //privados
     private Rigidbody2D Rigidbody2D;
     private float Horizontal;
     private bool MoveLeft;
     private bool MoveRight;
+
+    //AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +56,9 @@ public class PlayerMovement : MonoBehaviour
         MoveLeft = false;
         MoveRight = false;
         changeFormas();
+        //se ejecuta el sonido al iniciar el juego
+        gameObject.AddComponent<AudioSource>();
+        PlaySound();
     }
 
     //cuando se presiona el boton izquierdo
@@ -161,11 +175,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void collisionImage()
+    public void PlaySound()
     {
-        // if (Image.sprite == )
-        // {
-            
-        // }
+        source.PlayOneShot(clip);
     }
+
+    public void PlaySoundEndGame()
+    {
+        source.PlayOneShot(clipEnd);
+    }
+
 }
