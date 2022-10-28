@@ -10,6 +10,7 @@ public class AnimationIcon : MonoBehaviour
     public void iconRestart()
     {
         LeanTween.rotate(icon, 360f, 0.5f);
+
     }
 
 }
