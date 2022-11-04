@@ -3543,7 +3543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &955574986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4828,7 +4828,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 1380592626}
-  avatar: {fileID: 955574986}
   iconRestart: {fileID: 1823762339}
   title: {fileID: 1169545878}
   board: {fileID: 1490079513}
@@ -4837,6 +4836,12 @@ MonoBehaviour:
   audioSource: {fileID: 1269987742}
   menuAjustes: {fileID: 2059600153}
   menuObjetosAjustes: {fileID: 1869406672}
+  avatarPrefabs:
+  - {fileID: 54567236513819245, guid: a1e2482f7bfe9e049b7b042dcecb79e9, type: 3}
+  - {fileID: 8352100394016990640, guid: 6bb6932845d09df4987d0a22b8022ee8, type: 3}
+  - {fileID: 7843562282907336991, guid: 187522b9b34e696498366605508c2878, type: 3}
+  contenedor: {fileID: 1269987736}
+  posicion: {x: 1300, y: 300}
 --- !u!82 &1269987742
 AudioSource:
   m_ObjectHideFlags: 0

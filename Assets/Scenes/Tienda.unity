@@ -500,10 +500,10 @@ MonoBehaviour:
     precio: 0
     desbloqueado: 0
   - nombre: Circulo
-    precio: 100
+    precio: 10
     desbloqueado: 0
   - nombre: Humano
-    precio: 1000
+    precio: 20
     desbloqueado: 0
   botonComprar: {fileID: 1129695695}
   textoMonedas: {fileID: 784507451}
