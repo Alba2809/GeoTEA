@@ -10,6 +10,8 @@ public class VentanaCarga : MonoBehaviour
 
     void Start()
     {
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
         LeanTween.moveY(logo, 53, 1.5f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(logoAlpha);
     }
 

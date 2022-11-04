@@ -30,6 +30,8 @@ public class MenuPrincipal : MonoBehaviour
 
     private void Start()
     {
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
         LeanTween.moveY(logo, 257, 1.25f).setDelay(1f).setEase(LeanTweenType.easeOutBounce).setOnComplete(btnJTA);
         _sceneName = "";
     }

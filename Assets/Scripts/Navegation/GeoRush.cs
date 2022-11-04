@@ -39,6 +39,8 @@ public class GeoRush : MonoBehaviour
 
     private void Start()
     {
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
         LeanTween.moveX(avatar.GetComponent<RectTransform>(), -169f, 1.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack).setOnStart(audioAvatar).setOnComplete(alphaDialog);
         LeanTween.rotate(iconRestart, 360f, 0.5f).setDelay(0.5f);
         LeanTween.scale(title, new Vector3(1.2f, 1.2f, 1.2f), 0.5f).setDelay(0.3f).setOnComplete(titleScale);

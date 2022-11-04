@@ -15,6 +15,12 @@ public class MenuTienda : MonoBehaviour
         LoadData();
     }
 
+    private void Start()
+    {
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
+
     public void Ajustes()
     {
         menuAjustes.SetActive(true);
