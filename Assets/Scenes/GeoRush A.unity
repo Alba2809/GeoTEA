@@ -1130,6 +1130,7 @@ GameObject:
   - component: {fileID: 357689281}
   - component: {fileID: 357689280}
   - component: {fileID: 357689282}
+  - component: {fileID: 357689283}
   m_Layer: 5
   m_Name: Ajustes
   m_TagString: Untagged
@@ -1251,6 +1252,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &357689283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357689278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1269987743}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: SoundButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &358278476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5032,6 +5062,8 @@ MonoBehaviour:
   - {fileID: 54567236513819245, guid: a1e2482f7bfe9e049b7b042dcecb79e9, type: 3}
   - {fileID: 8352100394016990640, guid: 6bb6932845d09df4987d0a22b8022ee8, type: 3}
   - {fileID: 7843562282907336991, guid: 187522b9b34e696498366605508c2878, type: 3}
+  - {fileID: 241301143959140409, guid: 6cc2acd4e1ce781419d4c8aced256915, type: 3}
+  - {fileID: 4693928132978817384, guid: 34c6455ac521f8f4a9b008446f4fdd69, type: 3}
   contenedor: {fileID: 1269987736}
   posicion: {x: 1300, y: 300}
 --- !u!82 &1269987742
@@ -5364,7 +5396,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1269987743}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: SoundButton
           m_Mode: 1
