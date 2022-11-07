@@ -15,7 +15,10 @@ public class MenuJuegos : MonoBehaviour
     [SerializeField] private RectTransform btnRetrun;
     [SerializeField] private RectTransform btnAjuste;
 
-    
+    [SerializeField] private GameObject menuAjustes;
+    [SerializeField] private RectTransform menuObjetosAjustes;
+
+
     //variable de guardar informacion
     private string coinsPrefs = "Monedas";
 
@@ -26,6 +29,8 @@ public class MenuJuegos : MonoBehaviour
 
     private void Start()
     {
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
         LeanTween.moveX(logo, 0f, 1f).setDelay(0.2f).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.moveX(btnGame1, 0f, 1f).setDelay(0.2f).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.moveX(btnGame2, 0f, 1f).setDelay(0.2f).setEase(LeanTweenType.easeInOutQuad);
@@ -52,7 +57,8 @@ public class MenuJuegos : MonoBehaviour
 
     public void Ajustes()
     {
-        SceneManager.LoadScene("MenuAjustes");
+        menuAjustes.SetActive(true);
+        LeanTween.scale(menuObjetosAjustes, new Vector3(1, 1, 1), 0.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack);
     }
 
     public void Principal()

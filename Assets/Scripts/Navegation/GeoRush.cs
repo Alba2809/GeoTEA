@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GeoRush : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private RectTransform avatar;
+    //[SerializeField] private RectTransform avatar;
     [SerializeField] private RectTransform iconRestart;
     [SerializeField] private RectTransform title;
     [SerializeField] private GameObject board;
@@ -15,17 +15,33 @@ public class GeoRush : MonoBehaviour
     [SerializeField] private AudioClip avatarSound;
     [SerializeField] private AudioSource audioSource;
 
+    [SerializeField] private GameObject menuAjustes;
+    [SerializeField] private RectTransform menuObjetosAjustes;
+
+    //obtener avatar seleccionado
+    GameObject avatar;
+    public GameObject[] avatarPrefabs;
+    public GameObject contenedor;
+    public Vector2 posicion;
+    //new Vector2(1000, -574)
+    int avatarIndex;
+
     //variables de guardar informacion
     private string coinsPrefs = "Monedas";
 
     private void Awake()
     {
         LoadData();
+        avatarIndex = PlayerPrefs.GetInt("AvatarSeleccionado", 0);
+        avatar = Instantiate(avatarPrefabs[avatarIndex], posicion, Quaternion.identity, contenedor.transform);
+        avatar.GetComponent<RectTransform>().sizeDelta = new Vector2(338, 338);
     }
 
     private void Start()
     {
-        LeanTween.moveX(avatar, -169f, 1.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack).setOnStart(audioAvatar).setOnComplete(alphaDialog);
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
+        LeanTween.moveX(avatar.GetComponent<RectTransform>(), -169f, 1.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack).setOnStart(audioAvatar).setOnComplete(alphaDialog);
         LeanTween.rotate(iconRestart, 360f, 0.5f).setDelay(0.5f);
         LeanTween.scale(title, new Vector3(1.2f, 1.2f, 1.2f), 0.5f).setDelay(0.3f).setOnComplete(titleScale);
         LeanTween.alphaCanvas(board.GetComponent<CanvasGroup>(), 1f, 1f).setDelay(0.5f).setOnComplete(boardActive);   
@@ -53,7 +69,8 @@ public class GeoRush : MonoBehaviour
 
     public void Ajustes()
     {
-        SceneManager.LoadScene("MenuAjustes");
+        menuAjustes.SetActive(true);
+        LeanTween.scale(menuObjetosAjustes, new Vector3(1, 1, 1), 0.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack);
     }
 
     public void Juegos()

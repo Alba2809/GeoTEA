@@ -7,6 +7,11 @@ public class MusicaEscenas : MonoBehaviour
 
     private MusicaEscenas instance;
 
+    private void Start()
+    {
+        gameObject.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("volumenMusica", 0.3f);
+    }
+
     public MusicaEscenas Instance
     {
         get

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class Carril : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Carril : MonoBehaviour
     private Sprite Spr;
     //private int intentos = 3;
     //private int aciertos = 0;
+    public AudioSource source { get { return GetComponent<AudioSource>(); } }
+
+    public AudioClip clip;//sonido
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +33,10 @@ public class Carril : MonoBehaviour
         //menuGameEnd.SetActive(true);
         //Sprite.sprite;
         //Sprite.sprite;
+        gameObject.AddComponent<AudioSource>();
 
+         //collision.GetComponent<PlayerMovement>();
+        //clip = player.clipBurbuja;
     }
 
     // Update is called once per frame
@@ -36,6 +44,11 @@ public class Carril : MonoBehaviour
     //{
 
     //}
+    public void PlaySound()
+    {
+        //PlayerMovement player = GetComponent<PlayerMovement>();
+        source.PlayOneShot(clip);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,7 +62,7 @@ public class Carril : MonoBehaviour
 
 
                 //textoIntentos.text = "Itentos :" + aciertos;
-                if (player.aciertos == 1)//5
+                if (player.aciertos == 5)//5
                 {
                     Debug.Log("Tienes 20 monedas");
                     Debug.Log("Se ha terminado la partida y has ganado");
@@ -66,6 +79,7 @@ public class Carril : MonoBehaviour
                 Debug.Log("Imagen Incorrecta");
                 player.intentos -= 1;
                 textoIntentos.text = $"Intentos: {player.intentos}";
+                PlaySound();
 
                 if (player.intentos == 0)
                 {

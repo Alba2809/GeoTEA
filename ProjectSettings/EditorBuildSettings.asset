@@ -17,9 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tienda.unity
     guid: fc6c5f1079c2e4e4f992c60726d7c5aa
-  - enabled: 1
-    path: Assets/Scenes/MenuAjustes.unity
-    guid: 1ee6dad45ab8da84ba127cc8fde52478
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GeoRush A.unity
     guid: caa3220ce119b214fb0ba04670ba6c2f

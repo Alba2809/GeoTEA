@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30762444e5822b74c944131e40ee0950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText: {fileID: 0}
+  coinText: {fileID: 598463739}
 --- !u!1 &525679076
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource source { get { return GetComponent<AudioSource>(); } }
     public AudioClip clip; //sonido
     public AudioClip clipEnd; //sonido al finalizar partida
-
+    //public AudioClip clipBurbuja;
     //privados
     private Rigidbody2D Rigidbody2D;
     private float Horizontal = 0f;

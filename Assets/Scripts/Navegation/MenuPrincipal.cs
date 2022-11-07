@@ -12,6 +12,10 @@ public class MenuPrincipal : MonoBehaviour
     [SerializeField] private GameObject monedas;
     [SerializeField] private TextMeshProUGUI coinText;
 
+    [SerializeField] private GameObject menuAjustes;
+    [SerializeField] private RectTransform menuObjetosAjustes;
+    //[SerializeField] private RectTransform menuAjustesFondo;
+
     //variable de animacion
     private float delayLeft = 0.5f;
 
@@ -26,6 +30,8 @@ public class MenuPrincipal : MonoBehaviour
 
     private void Start()
     {
+        //evitar rotacion que el juego se pueda jugar en horizontal
+        Screen.orientation = ScreenOrientation.Portrait;
         LeanTween.moveY(logo, 257, 1.25f).setDelay(1f).setEase(LeanTweenType.easeOutBounce).setOnComplete(btnJTA);
         _sceneName = "";
     }
@@ -67,10 +73,8 @@ public class MenuPrincipal : MonoBehaviour
 
     public void Ajustes()
     {
-        _sceneName = "MenuAjustes";
-        LeanTween.moveX(logo, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack);
-        LeanTween.moveX(btnJugar, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack);
-        LeanTween.moveX(btnTienda, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack).setOnComplete(sceneChange);
+        menuAjustes.SetActive(true);
+        LeanTween.scale(menuObjetosAjustes, new Vector3(1, 1, 1), 0.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack);
     }
 
 

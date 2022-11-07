@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseGameRunner : MonoBehaviour
 {
@@ -9,6 +6,11 @@ public class PauseGameRunner : MonoBehaviour
     private bool gameRunning = true;
 
     public GameObject button;
+
+    //regresar
+    [SerializeField] private GameObject menGameOut;
+    [SerializeField] private RectTransform menuOut;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,5 +83,20 @@ public class PauseGameRunner : MonoBehaviour
     {
         gameRunning = false;
         Time.timeScale = 1;
+    }
+
+
+    //para salir de la aplicacion 
+    public void showMenu()
+    {
+        menGameOut.SetActive(true);
+        LeanTween.scale(menuOut, new Vector3(1, 1, 1), 0.5f).setDelay(0.1f).setEase(LeanTweenType.easeOutBack);
+        Invoke("ChangeGameRunningState", 0.6f);
+    }
+
+    public void MenuDisabled()
+    {
+        menGameOut.SetActive(false);
+        ChangeGameRunningState();
     }
 }
