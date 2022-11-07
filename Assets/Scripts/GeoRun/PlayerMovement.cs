@@ -6,10 +6,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 using UnityEngine.UI;
+//[System.Serializable]
+//public enum SIDE { Left,Mid,Right}
 
 public class PlayerMovement : MonoBehaviour
 {
     //publicos
+    //public SIDE m_SIDE = SIDE.Mid;
     public float speed;
     public float speedMov;
     public GameObject highway;
@@ -36,11 +39,18 @@ public class PlayerMovement : MonoBehaviour
 
     //privados
     private Rigidbody2D Rigidbody2D;
-    private float Horizontal;
+    private float Horizontal = 0f;
     private bool MoveLeft;
     private bool MoveRight;
+    //private CharacterController m_char;
 
     //AudioSource audioSource;
+
+    //mover hacia los lados
+    //public bool SwipeLeft;
+    //public bool SwipeRight;
+    //public float XValue;
+    //float NewXPos = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -50,15 +60,23 @@ public class PlayerMovement : MonoBehaviour
         //triangulo.sprite = "";
         //changeFormas();
         Image = GameObject.Find("ImageCambiante").GetComponent<Image>();
-        
+
         //Image.sprite = formasArr[1];
-        
+        //m_char = GetComponent<CharacterController>();
         MoveLeft = false;
         MoveRight = false;
+        //Horizontal = 0;//-1f;
+        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         changeFormas();
         //se ejecuta el sonido al iniciar el juego
         gameObject.AddComponent<AudioSource>();
         PlaySound();
+        Rigidbody2D.velocity = new Vector2(0, 0);
+
+        //Debug.Log(Horizontal);
+        //Debug.Log(Rigidbody2D.transform.position.x);
+
+
     }
 
     //cuando se presiona el boton izquierdo
@@ -90,8 +108,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //Horizontal = Input.GetAxisRaw("Horizontal");
         Movement();
+        //Rigidbody2D.transform.position = new Vector3(Horizontal, Rigidbody2D.transform.position.y, Rigidbody2D.transform.position.z);
+        //Debug.Log(Horizontal);
+        //Debug.Log(Rigidbody2D.transform.position.x);
         MovementHighway();
         InfiniteHighway();
+        //m_char.Move((NewXPos - transform.position.x) * Vector2.right);
+        //Rigidbody2D.MovePosition((NewXPos - transform.position.x) * Vector2.right);
     }
 
     //carretera en movimiento infinito
@@ -119,26 +142,71 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Movement()
     {
-        
-        //si se presiona el boton izquierdo
-        if (MoveLeft)
-        {
-            Horizontal = -speedMov;
-        }
+        //SwipeLeft = Input.GetKeyDown(KeyCode.A);
+        //SwipeRight = Input.GetKeyDown(KeyCode.D);
+        ////si se presiona el boton izquierdo
+        //if (MoveLeft || SwipeLeft)
+        //{
+        //    //Horizontal = -speedMov;
+        //    if (m_SIDE == SIDE.Mid)
+        //    {
+        //        NewXPos = -XValue;
+        //        m_SIDE = SIDE.Left;
+        //        Debug.Log("mov");
+        //    }
+        //    else if (m_SIDE == SIDE.Right)
+        //    {
+        //        NewXPos = 0;
+        //        m_SIDE = SIDE.Mid;
 
-        //si se presiona el boton derecho
-        else if(MoveRight)
+        //    }
+        //}
+
+        ////si se presiona el boton derecho
+        //else if(MoveRight || SwipeRight)
+        //{
+        //    //Horizontal = speedMov;
+        //    if (m_SIDE == SIDE.Mid)
+        //    {
+        //        NewXPos = XValue;
+        //        m_SIDE = SIDE.Right;
+
+        //    }
+        //    else if (m_SIDE == SIDE.Left)
+        //    {
+        //        NewXPos = 0;
+        //        m_SIDE = SIDE.Mid;
+
+        //    }
+        //}
+        //else{
+        //    Horizontal = 0;
+        //}
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)|| MoveLeft)
         {
-            Horizontal = speedMov;
+            Debug.Log("a");
+            Rigidbody2D.velocity = new Vector2(-0.5f, 0);
+            StartCoroutine(stopLaneCh());
+
         }
-        else{
-            Horizontal = 0;
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)|| MoveRight)
+        {
+            Rigidbody2D.velocity = new Vector2(0.5f, 0);
+            StartCoroutine(stopLaneCh());
         }
+    }
+
+    IEnumerator stopLaneCh()
+    {
+        yield return new WaitForSeconds(1f);
+        Rigidbody2D.velocity = new Vector2(0,0);
     }
 
     private void FixedUpdate() 
     {
-        Rigidbody2D.velocity = new Vector2(Horizontal,Rigidbody2D.velocity.y);
+        //Rigidbody2D.velocity = new Vector2(Horizontal,Rigidbody2D.velocity.y);
+        //m_char.Move((Horizontal - transform.position.x) * Vector3.right);
+        //Rigidbody2D.transform.position = new Vector3(Horizontal, Rigidbody2D.transform.position.y, Rigidbody2D.transform.position.z);
     }
 
     void changeFormas()
