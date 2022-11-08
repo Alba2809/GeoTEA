@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonAjustes : MonoBehaviour
 {
@@ -9,10 +10,26 @@ public class ButtonAjustes : MonoBehaviour
     [SerializeField] private RectTransform menuObjetosAjustes;
     [SerializeField] private GameObject Canvas;
     PauseGameRunner pause;
+
+    //slider UI
+    public Slider sliderMusica;
+    public Slider sliderEfecto;
+
+    //ajueste de musica y efectos
+    public string musicaPrefs { get { return "Musica"; } }
+    public string efectoPrefs { get { return "Efecto"; } }
+    //public int currentCoins { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
         pause = FindObjectOfType<PauseGameRunner>();
+        float musica = PlayerPrefs.GetFloat(musicaPrefs, 0f);
+        float efecto = PlayerPrefs.GetFloat(efectoPrefs, 0f);
+        
+        sliderMusica.value = musica;
+        sliderEfecto.value = efecto;
+
     }
 
     // Update is called once per frame
@@ -28,14 +45,6 @@ public class ButtonAjustes : MonoBehaviour
 
         Canvas.SetActive(false);
         Invoke("PauseGame", 0.6f);
-        //var t = Task.Run(async delegate
-        //{
-        //    await Task.Delay(1000);
-        //});
-        //t.Wait();
-        //Debug.Log("timento");
-
-        
     }
 
     void PauseGame()
@@ -50,5 +59,15 @@ public class ButtonAjustes : MonoBehaviour
         pause.ChangeGameRunningState();
 
 
+    }
+
+    public void SetMusicaPref()
+    {
+        PlayerPrefs.SetFloat(musicaPrefs, sliderMusica.value);
+    }
+
+    public void SetEfectoPref()
+    {
+        PlayerPrefs.SetFloat(efectoPrefs, sliderEfecto.value);
     }
 }

@@ -62,8 +62,9 @@ public class Carril : MonoBehaviour
 
 
                 //textoIntentos.text = "Itentos :" + aciertos;
-                if (player.aciertos == 5)//5
+                if (player.aciertos == 1)//5
                 {
+                    PlayerPrefs.SetInt(player.coinsPrefs, player.currentCoins + 20);
                     Debug.Log("Tienes 20 monedas");
                     Debug.Log("Se ha terminado la partida y has ganado");
                     Time.timeScale = 0;

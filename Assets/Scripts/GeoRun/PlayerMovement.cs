@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 using UnityEngine.UI;
+using TMPro;
 //[System.Serializable]
 //public enum SIDE { Left,Mid,Right}
 
@@ -36,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource source { get { return GetComponent<AudioSource>(); } }
     public AudioClip clip; //sonido
     public AudioClip clipEnd; //sonido al finalizar partida
+    [SerializeField] public TextMeshProUGUI TextoMonedas; //monedas
+
     //public AudioClip clipBurbuja;
     //privados
     private Rigidbody2D Rigidbody2D;
@@ -43,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
     private bool MoveLeft;
     private bool MoveRight;
     //private CharacterController m_char;
+
+    //variable de cantidad de monedas
+    public string coinsPrefs { get { return "Monedas"; } }
+    public int currentCoins { get; set; }
 
     //AudioSource audioSource;
 
@@ -75,9 +82,11 @@ public class PlayerMovement : MonoBehaviour
 
         //Debug.Log(Horizontal);
         //Debug.Log(Rigidbody2D.transform.position.x);
-
+        currentCoins = PlayerPrefs.GetInt(coinsPrefs, 0);
+        TextoMonedas.text = $"{currentCoins}";
 
     }
+
 
     //cuando se presiona el boton izquierdo
     public void PointerDownLeft()
