@@ -1544,16 +1544,40 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496361653}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: SceneMenuJuegos
+      - m_Target: {fileID: 519420034}
+        m_TargetAssemblyTypeName: PauseGameRunner, Assembly-CSharp
+        m_MethodName: GameRunning
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MenuJuegos
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1862987702}
+        m_TargetAssemblyTypeName: MenuGameOut, Assembly-CSharp
+        m_MethodName: showMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 496361653}
+        m_TargetAssemblyTypeName: PauseGameRunner, Assembly-CSharp
+        m_MethodName: SceneMenuJuegos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &486012031
@@ -1899,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 598463739}
+  menuEnd: {fileID: 1125539452}
 --- !u!114 &496361654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,6 +1939,8 @@ MonoBehaviour:
   menuAjustes: {fileID: 1886225609}
   menuObjetosAjustes: {fileID: 681682339}
   Canvas: {fileID: 496361648}
+  sliderMusica: {fileID: 1952546431}
+  sliderEfecto: {fileID: 1186367953}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,9 +4391,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioVolumen, Assembly-CSharp
-        m_MethodName: GuardarVolumenEfecto
+      - m_Target: {fileID: 496361654}
+        m_TargetAssemblyTypeName: ButtonAjustes, Assembly-CSharp
+        m_MethodName: SetEfectoPref
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6000,6 +6027,7 @@ GameObject:
   - component: {fileID: 1862987700}
   - component: {fileID: 1862987699}
   - component: {fileID: 1862987698}
+  - component: {fileID: 1862987702}
   m_Layer: 5
   m_Name: GameOut
   m_TagString: Untagged
@@ -6089,6 +6117,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1862987702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862987696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f345cd59d3cce4d9cc2f4e08b85c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menGameOut: {fileID: 848416533}
+  menuOut: {fileID: 540610101}
+  menuOutFondo: {fileID: 1544163505}
+  avatar: {fileID: 0}
+  iconRestart: {fileID: 0}
+  title: {fileID: 0}
+  board: {fileID: 0}
+  boxDialog: {fileID: 0}
+  restartText: {fileID: 0}
+  popText: {fileID: 0}
 --- !u!1 &1886225609
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,10 +6376,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 496361653}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: SceneRunnerLevel2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6467,9 +6517,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioVolumen, Assembly-CSharp
-        m_MethodName: GuardarVolumenMusica
+      - m_Target: {fileID: 496361654}
+        m_TargetAssemblyTypeName: ButtonAjustes, Assembly-CSharp
+        m_MethodName: SetMusicaPref
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6969,7 +7019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9e1f9c705dd19a18c72e4dca461a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   speedMov: 2
   highway: {fileID: 755425800}
   formas:
@@ -6992,6 +7042,14 @@ MonoBehaviour:
   end: {fileID: 757496666}
   clip: {fileID: 8300000, guid: cc2b5b7117384d34ea5cfc59a6502678, type: 3}
   clipEnd: {fileID: 8300000, guid: c456e568a97b86c4589ed7895f476037, type: 3}
+  figuraClip:
+  - {fileID: 8300000, guid: 90a5cd38ec4c67c40b9481a30de76310, type: 3}
+  - {fileID: 8300000, guid: e23725af3ae182d4e947ee2c5665eb88, type: 3}
+  - {fileID: 8300000, guid: 0a4f84379f5fb134d93c238cfe03ca86, type: 3}
+  - {fileID: 8300000, guid: 3ec0a580e703b2749ae51afc22c89ae7, type: 3}
+  - {fileID: 8300000, guid: 53edd07a351377a4884f1cb72dd5a4bb, type: 3}
+  TextoMonedas: {fileID: 598463739}
+  Canvas: {fileID: 496361648}
 --- !u!50 &2056249789
 Rigidbody2D:
   serializedVersion: 4

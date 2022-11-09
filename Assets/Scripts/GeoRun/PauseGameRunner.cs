@@ -90,7 +90,8 @@ public class PauseGameRunner : MonoBehaviour
     public void showMenu()
     {
         menGameOut.SetActive(true);
-        LeanTween.scale(menuOut, new Vector3(1, 1, 1), 0.5f).setDelay(0.1f).setEase(LeanTweenType.easeOutBack);
+        //LeanTween.scale(menuOut, new Vector3(1, 1, 1), 0.5f).setDelay(0.1f).setEase(LeanTweenType.easeOutBack);
+        animacion();
         Invoke("ChangeGameRunningState", 0.6f);
     }
 
@@ -98,5 +99,10 @@ public class PauseGameRunner : MonoBehaviour
     {
         menGameOut.SetActive(false);
         ChangeGameRunningState();
+    }
+
+    public void animacion()
+    {
+        LeanTween.scale(menuOut, new Vector3(1, 1, 1), 0.5f).setDelay(0.1f).setEase(LeanTweenType.easeOutBack);
     }
 }

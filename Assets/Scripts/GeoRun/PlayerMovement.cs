@@ -37,7 +37,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource source { get { return GetComponent<AudioSource>(); } }
     public AudioClip clip; //sonido
     public AudioClip clipEnd; //sonido al finalizar partida
+    public AudioClip[] figuraClip; 
     [SerializeField] public TextMeshProUGUI TextoMonedas; //monedas
+    public GameObject Canvas;//{ get; }
 
     //public AudioClip clipBurbuja;
     //privados
@@ -260,6 +262,23 @@ public class PlayerMovement : MonoBehaviour
     public void PlaySoundEndGame()
     {
         source.PlayOneShot(clipEnd);
+    }
+
+    public void PlaySoundFigura(string clip)
+    {
+        foreach (AudioClip clipPlay in figuraClip)
+        {
+            //Debug.Log(clipPlay.name == clip);
+            //Debug.Log(clip);
+            //Debug.Log();
+            if (clip.StartsWith(clipPlay.name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                source.PlayOneShot(clipPlay);
+            }
+        }
+
+        //source.PlayOneShot(figuraClip[clip]);
+        
     }
 
 }

@@ -60,6 +60,8 @@ public class Carril : MonoBehaviour
                 Debug.Log("Imagen correcta si es la imagen");
                 player.aciertos += 1;
 
+                //reproducir sonido
+                player.PlaySoundFigura(Image.sprite.ToString());
 
                 //textoIntentos.text = "Itentos :" + aciertos;
                 if (player.aciertos == 1)//5
@@ -67,6 +69,7 @@ public class Carril : MonoBehaviour
                     PlayerPrefs.SetInt(player.coinsPrefs, player.currentCoins + 20);
                     Debug.Log("Tienes 20 monedas");
                     Debug.Log("Se ha terminado la partida y has ganado");
+                    CanvasDisabled(player.Canvas);//player.ca
                     Time.timeScale = 0;
                     if(player.levelOne == true)
                     {
@@ -85,6 +88,7 @@ public class Carril : MonoBehaviour
                 if (player.intentos == 0)
                 {
                     Debug.Log("El juegos ha terminado");
+                    CanvasDisabled(player.Canvas);
                     Time.timeScale = 0;
                     EndGame(false);
                     player.PlaySoundEndGame();
@@ -112,6 +116,11 @@ public class Carril : MonoBehaviour
         //if (nextEnd == true)
         //{ menuNextGameEnd.SetActive(true); }
         //else { menuNextGameEnd.SetActive(false); }
+    }
+
+    private void CanvasDisabled(GameObject canvas)
+    {
+        canvas.SetActive(false);
     }
 
 }
