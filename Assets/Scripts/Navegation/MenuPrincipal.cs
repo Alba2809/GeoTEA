@@ -16,6 +16,9 @@ public class MenuPrincipal : MonoBehaviour
     [SerializeField] private RectTransform menuObjetosAjustes;
     //[SerializeField] private RectTransform menuAjustesFondo;
 
+    [SerializeField] private GameObject menu_figuras;
+    [SerializeField] private RectTransform menu_objetos_figuras;
+
     //variable de animacion
     private float delayLeft = 0.5f;
 
@@ -55,10 +58,19 @@ public class MenuPrincipal : MonoBehaviour
 
     public void Jugar()
     {
-        _sceneName = "MenuJuegos";
-        LeanTween.moveX(logo, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack);
-        LeanTween.moveX(btnJugar, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack);
-        LeanTween.moveX(btnTienda, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack).setOnComplete(sceneChange);
+        /*string fecha = System.DateTime.Now.ToString("MM/dd/yyyy");
+        if (PlayerPrefs.GetInt("figuras_escuchadas", 0) > 0 && fecha.Equals(PlayerPrefs.GetString("fecha", fecha)))
+        {
+            _sceneName = "MenuJuegos";
+            LeanTween.moveX(logo, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack);
+            LeanTween.moveX(btnJugar, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack);
+            LeanTween.moveX(btnTienda, -900f, 1f).setDelay(delayLeft).setEase(LeanTweenType.easeInBack).setOnComplete(sceneChange);
+        }
+        else
+        {*/
+            menu_figuras.SetActive(true);
+            LeanTween.scale(menu_objetos_figuras, new Vector3(1, 1, 1), 0.5f).setDelay(0.5f).setEase(LeanTweenType.easeOutBack);
+        //}
         
     }
 
