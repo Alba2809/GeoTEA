@@ -64,9 +64,19 @@ public class Carril : MonoBehaviour
                 player.PlaySoundFigura(Image.sprite.ToString());
 
                 //textoIntentos.text = "Itentos :" + aciertos;
-                if (player.aciertos == 1)//5
+                if (player.aciertos == 5)//5
                 {
-                    PlayerPrefs.SetInt(player.coinsPrefs, player.currentCoins + 20);
+                    //nivel 1
+                    if (player.levelOne)
+                    {
+                        PlayerPrefs.SetInt(player.coinsPrefs, player.currentCoins + 20);
+                    }
+                    else //nivel 2
+                    {
+                        PlayerPrefs.SetInt(player.coinsPrefs, player.currentCoins + 40);
+                    }
+
+                    //PlayerPrefs.SetInt(player.coinsPrefs, player.currentCoins + 20);
                     Debug.Log("Tienes 20 monedas");
                     Debug.Log("Se ha terminado la partida y has ganado");
                     CanvasDisabled(player.Canvas);//player.ca
